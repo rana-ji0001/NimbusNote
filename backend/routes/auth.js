@@ -4,6 +4,7 @@ const router = express.Router();
 const {body, validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
+const fetchuser = require("../middleware/fetchuser");
 
 const JWT_SECRET = "ranaBad$boy";
   
@@ -81,6 +82,22 @@ router.post("/createuser" ,[
       res.status(500).send("Itnernal server error");
     }
     });
+
+
+    ////Get loggedIn user detail using post req :: no login required res= api/auth/login
+    router.post("/getuser" ,fetchuser,async (req,res) => {
+      try {
+        const userID = req.user.id;
+        const user = await User.findById(userID).select("-password");
+        res.send(user);
+        
+      } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Itnernal server error");
+      }
+
+    });
+
 
 
 module.exports = router
