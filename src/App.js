@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import NoteState from './context/notes/noteState';
+import Alert from './components/Alert';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                 <Route path='/about' element={<About />} />
               </Routes>
             </div>
+            <Alert msg="This is A Good App"/>
           </Router>
         </div>
       </NoteState>

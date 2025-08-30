@@ -55,11 +55,11 @@ router.put("/updatenote/:id" ,fetchuser, async (req,res) => {
     let note =  await Notes.findById(req.params.id);
 
     if(!note){
-        return res.status(404).send("Not Found");
+        return res.status(404).json({error:"Not Found"})
     }
     //allow updation if the user own this note 
     if(note.user.toString() !== req.user.id){
-        return res.status(401).send("Not Allowed");
+        return res.status(401).json({error:"Not Allowed"});
     }
 
     note = await Notes.findByIdAndUpdate(req.params.id , {$set:newNote} ,{new:true});
@@ -80,18 +80,18 @@ router.delete("/deletenote/:id" ,fetchuser, async (req,res) => {
     let note =  await Notes.findById(req.params.id);
 
     if(!note){
-        return res.status(404).send("Not Found");
+        return res.status(404).send({error:"Not Found"});
     }
     //allow update if the user own this note
     if(note.user.toString() !== req.user.id){
-        return res.status(401).send("Not Allowed");
+        return res.status(401).json({error:"Not Allowed"});
     }
 
     note = await Notes.findByIdAndDelete(req.params.id);
     res.status(200).json({Success: "Note has been Deleted",note:note});
     } catch (error) {
         console.log(error.message);
-        res.status(500).send("Itnernal server error");
+        res.status(500).json({ error: "Internal server error" });
     }
     
 
