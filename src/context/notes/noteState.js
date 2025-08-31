@@ -46,7 +46,7 @@ const NoteState = (props) => {
         //TODO API CALL(update note API which we created in backend)
 
         const response = await fetch(`${host}/api/notes/updatenote/${id}`,{
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type" : "application/json",
                 "auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhhMzdiYjllNjI4ZTk3MmIzNmIzMTE2In0sImlhdCI6MTc1NTYyNjY5NX0.BfHvza2mwezqJbnJQeAaJzxHFjkMkKgZ3hgyRxOlRCg"
@@ -54,19 +54,22 @@ const NoteState = (props) => {
             body: JSON.stringify({title,description,tag})
         });
         const json = await response.json();
-        
+        console.log(json)
+        let newNote = JSON.parse(JSON.stringify(notes));
 
 
         //logic to edit in client
-        for (let index = 0; index < notes.length; index++) {
-            const element = notes[index];
-            if(element.id === id){
-                element.title = title;
-                element.description = description;
-                element.tag = tag;
+        for (let index = 0; index < newNote.length; index++) {
+            const element = newNote[index];
+            if(element._id === id){
+                newNote[index].title = title;
+                newNote[index].description = description;
+                newNote[index].tag = tag;
+                break;
             }
             
         }
+        setNotes(newNote);
 
     }
     //add a note
