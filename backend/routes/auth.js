@@ -55,19 +55,23 @@ router.post("/createuser" ,[
     body('password','password can not be blank').exists(),
 
     ],async (req,res) => {
+      let success = false;
       const result = validationResult(req);
     if (!result.isEmpty()) {
-        return res.status(400).json({result:result.array()});
+      success = false;
+        return res.status(400).json({success,result:result.array()});
     }
     const {email,password} = req.body;
       try {
       let user = await User.findOne({email});
       if(!user){
-        return res.status(400).json({error:"Please try to login with correct cradential"});
+        success = false;
+        return res.status(400).json({success,error:"Please try to login with correct cradential"});
       }
       const passwordCompare = await bcrypt.compare(password,user.password);
       if(!passwordCompare){
-        return res.status(400).json({error:"Please try to login with correct cradential"});
+        success = false;
+        return res.status(400).json({success,error:"Please try to login with correct cradential"});
       }
       const data = {
       user:{
@@ -76,7 +80,8 @@ router.post("/createuser" ,[
     }
     const authtoken = jwt.sign(data,JWT_SECRET);
     // console.log(jwtData);
-    res.json({authtoken});
+      success = true;
+    res.json({success,authtoken});
     } catch(error){
       console.log(error.message);
       res.status(500).send("Itnernal server error");
