@@ -14,15 +14,18 @@ router.post("/createuser" ,[
     body('name','enter a valid name').isLength({min:3}),
     body('password','password must be atleast of three characters').isLength({min:5})
 ],async (req,res) => {
+    let success = false;
     const result = validationResult(req);
     if (!result.isEmpty()) {
-        return res.status(400).json({result:result.array()});
+      success = false;
+        return res.status(400).json({success,result:result.array()});
   }
   //if user with this email already exits then give a error message 
   try {
   let user = await User.findOne({email: req.body.email});
   if(user){
-    res.status(400).json({error:"sorry a user with this email already exits"});
+    success = false;
+    res.status(400).json({success,error:"sorry a user with this email already exits"});
   }
   const salt = await bcrypt.genSalt(10);
   const secPass = await bcrypt.hash(req.body.password,salt);
@@ -37,9 +40,10 @@ router.post("/createuser" ,[
         id: user.id
       }
     }
+    success = true;
     const authtoken = jwt.sign(data,JWT_SECRET);
     // console.log(jwtData);
-    res.json({authtoken});
+    res.json({success,authtoken});
     } catch (error) {
         // when some error occured in my code (no one knows what can happen)
         console.log(error.message);

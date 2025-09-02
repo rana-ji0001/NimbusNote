@@ -29,11 +29,12 @@ const NoteState = (props) => {
             method: "GET",
             headers: {
                 "Content-Type" : "application/json",
-                "auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhhMzdiYjllNjI4ZTk3MmIzNmIzMTE2In0sImlhdCI6MTc1NTYyNjY5NX0.BfHvza2mwezqJbnJQeAaJzxHFjkMkKgZ3hgyRxOlRCg"
+                "auth-token" : localStorage.getItem("token"),
             }
         });
         const json = await response.json();
-        console.log(json);
+        console.log("Fetching notes with token:", localStorage.getItem("token"));
+        console.log("Fetched notes:", json);
         setNotes(json);
         
     }
@@ -80,7 +81,7 @@ const NoteState = (props) => {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",
-                "auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhhMzdiYjllNjI4ZTk3MmIzNmIzMTE2In0sImlhdCI6MTc1NTYyNjY5NX0.BfHvza2mwezqJbnJQeAaJzxHFjkMkKgZ3hgyRxOlRCg"
+                "auth-token" : localStorage.getItem("token"),
             },
             body: JSON.stringify({title,description,tag})
         });

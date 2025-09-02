@@ -10,8 +10,8 @@ const {body, validationResult } = require('express-validator');
 //route1 get all the notes of that particular user using req api/notes/fetchallnotes :: login required
 router.get("/fetchallnotes" ,fetchuser, async (req,res) => {
     try {
-    const notes = await Notes.find({user:req.user.id});
-    res.json(notes);
+        const notes = await Notes.find({user:req.user.id});
+        res.json(notes);
     } catch (error) {
         console.log(error.message);
             res.status(500).send("Itnernal server error");

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Alert from './Alert';
+// import Alert from './Alert';
 
 
-const Login = () =>  {
+const Login = (props) =>  {
   let navigate = useNavigate();
 
 
@@ -43,9 +43,10 @@ const Login = () =>  {
       if(json.success){
         localStorage.setItem("token",json.authtoken);
         navigate("/");
+        props.showAlert("Welcome Back!!","success");
 
       }else{
-        setTimeout(<Alert/>,1000)
+        props.showAlert("Please Enter Correct Details","warning");
       }
       
       // Simulate loading time
@@ -54,7 +55,8 @@ const Login = () =>  {
       // alert('Login successful! (This is just a demo)');
     } catch (error) {
       console.error('Login failed:', error);
-      alert('Login failed. Please try again.');
+      props.showAlert("Please Enter Correct Details","warning");
+
     } finally {
       setIsLoading(false);
     }
