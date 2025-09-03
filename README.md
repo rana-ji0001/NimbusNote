@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+🌩️ NimbusNote
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NimbusNote is a full-stack MERN application for creating, organizing, and managing your notes securely. It comes with JWT-based authentication, CRUD operations for notes, and a clean React frontend.
 
-## Available Scripts
+🚀 Getting Started
 
-In the project directory, you can run:
+1️⃣ Clone the repository
 
-### `npm start`
+https://github.com/rana-ji0001/NimbusNote.git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+cd NimbusNote
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2️⃣ Install dependencies
 
-### `npm test`
+Frontend:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+cd frontend
 
-### `npm run build`
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Backend:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+cd backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install
 
-### `npm run eject`
+3️⃣ Setup Environment Variables
+In your backend folder, create a .env file:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+MONGO_URI=your_mongodb_connection_string
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+JWT_SECRET=your_secret_key
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+PORT=5000
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+✨ Features
 
-## Learn More
+🔑 User Authentication (Signup & Login with JWT)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+📝 Create, Read, Update, and Delete notes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🏷️ Tagging system for better organization
 
-### Code Splitting
+🔒 Secure backend with password hashing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+🎨 Responsive and modern UI with React
 
-### Analyzing the Bundle Size
+⚡ Fast API powered by Express & MongoDB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+🛠️ Tech Stack
 
-### Making a Progressive Web App
+Frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+React.js
 
-### Advanced Configuration
+React Router
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Context API / Hooks
 
-### Deployment
+TailwindCSS / Bootstrap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Backend:
 
-### `npm run build` fails to minify
+Node.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Express.js
+
+MongoDB (with Mongoose)
+
+JWT Authentication
+
+bcrypt.js
+
+Deployment:
+
+Frontend → Vercel
+
+Backend → Render/Heroku (or any Node hosting)
+▶️ Running the App Locally
+Run Backend:
+npm run both //this will runn both backend and frontend
+
+Your app will be live on:
+
+Frontend → http://localhost:3000
+
+Backend → http://localhost:5000/api
+
+📸 Screenshots
+
+
+[capture_20250903124026527.bmp](https://github.com/user-attachments/files/22110707/capture_20250903124026527.bmp)
+
+
+[capture_20250903124049076.bmp](https://github.com/user-attachments/files/22110708/capture_20250903124049076.bmp)
+
+🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+
