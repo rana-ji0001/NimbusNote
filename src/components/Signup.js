@@ -39,8 +39,9 @@ const Signup = (props) => {
 
       if (json.success) {
         localStorage.setItem("token", json.authtoken);
+        props.setToken(json.authtoken);
         navigate("/");
-        props.showAlert("User Created Succesfully","success");
+        props.showAlert("Welcome Sir!!","success");
       } else {
         props.showAlert("Check Your Details","danger");
         

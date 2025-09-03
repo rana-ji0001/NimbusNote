@@ -42,6 +42,7 @@ const Login = (props) =>  {
       // await loginUser(formData.email, formData.password);
       if(json.success){
         localStorage.setItem("token",json.authtoken);
+        props.setToken(json.authtoken);
         navigate("/");
         props.showAlert("Welcome Back!!","success");
 

@@ -118,6 +118,7 @@ const NoteState = (props) => {
 
 
     }
+    
     const [notes,setNotes] = useState(notesIntial);
     return (
         <NoteContext.Provider value={{notes,addNotes,editNotes,deleteNotes,getNotes}}>

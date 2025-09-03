@@ -91,7 +91,7 @@ function Notes(props) {
       </div>
       <div>
         <div className="row my-3">
-          <h2>Your Notes</h2>
+          <h2>{notes.length > 0 ?"Your Notes:-":"Create Your Notes:-"}</h2>
           {notes.map((note) => {
             return <Noteitem key={note._id} updateNote={updateNote} note={note}  showAlert={props.showAlert}/>;
           })}

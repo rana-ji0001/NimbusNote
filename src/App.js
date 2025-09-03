@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
    const [alert,setAlert] = useState(null);
   const showAlert = (message,type) => {
     setAlert({
@@ -30,13 +31,13 @@ function App() {
       <NoteState>
         <div className="App">
           <Router>
-            <Navbar />
+            <Navbar token={token} setToken={setToken}/>
             <div className="container">
               <Routes>
-                <Route path='/' element={<Home showAlert={showAlert}/>} />
-                <Route path='/about' element={<About showAlert={showAlert}/>} />
-                <Route path='/login' element={<Login showAlert={showAlert}/>} />
-                <Route path='/signup' element={<Signup showAlert={showAlert}/>} />
+                <Route path='/' element={<Home showAlert={showAlert} setToken={setToken}/>} />
+                <Route path='/about' element={<About showAlert={showAlert} setToken={setToken}/>} />
+                <Route path='/login' element={<Login showAlert={showAlert} setToken={setToken}/>} />
+                <Route path='/signup' element={<Signup showAlert={showAlert} setToken={setToken}/>} />
               </Routes>
             </div>
             <Alert alert={alert}/>
